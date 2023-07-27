@@ -9,7 +9,7 @@ const categoryRoutes=require('./routes/category');
 const orderRoutes=require('./routes/order');
 const positionRoutes=require('./routes/position');
 const keys=require('./config/keys');
-require('dotenv').config();
+
 const app=express();
 mongoose.connect(keys.mongoURI).then(()=>{
     console.log('db connected');
@@ -28,6 +28,7 @@ app.use('/api/analytics',analyticsRoutes);
 app.use('/api/category',categoryRoutes);
 app.use('/api/order',orderRoutes);
 app.use('/api/position',positionRoutes);
+
 
 if(process.env.NODE_ENV==='production'){
 app.use(express.static('client/dist/client'));
